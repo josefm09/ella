@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Col, Row } from "antd";
 import moment from "moment";
 
-import { getAllBookings } from "../store/actions/bookingActions";
+import { getAllBookings } from "../../store/actions/bookingActions";
 
-import DefaultLayout from "../components/DefaultLayout";
-import Spinner from "../components/Spinner";
+import DefaultLayout from "../../components/DefaultLayout";
+import Spinner from "../../components/Spinner";
 
 const UserBookings = () => {
   const dispatch = useDispatch();

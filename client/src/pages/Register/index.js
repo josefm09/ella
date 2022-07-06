@@ -4,21 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
-import { userLogin } from "../store/actions/userActions";
+import { userRegister } from "../../store/actions/userActions";
 
-import Spinner from "../components/Spinner";
+import Spinner from "../../components/Spinner";
 
-const Login = () => {
+const Register = () => {
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.alertsReducer);
 
   const onFinish = (values) => {
-    dispatch(userLogin(values));
+    dispatch(userRegister(values));
   };
 
   return (
-    <div className="login-form">
+    <div className="login">
       {loading && <Spinner />}
       <Row gutter={16} className="d-flex align-items-center">
         <Col md={12} lg={14} style={{ position: "relative" }}>
@@ -30,7 +30,7 @@ const Login = () => {
             className="login-form p-5"
             onFinish={onFinish}
           >
-            <h1>Login</h1>
+            <h1>Register</h1>
             <hr />
             <Form.Item
               name="username"
@@ -68,10 +68,10 @@ const Login = () => {
                 htmlType="submit"
                 className="login-form-button"
               >
-                Log in
+                Register
               </Button>
               <hr />
-              <Link to="/register">Click Here to Register</Link>
+              <Link to="/login">Click Here to Login</Link>
             </Form.Item>
           </Form>
         </Col>
@@ -80,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

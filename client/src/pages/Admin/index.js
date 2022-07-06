@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Col, Row, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
-import { deleteCar, getAllCars } from "../store/actions/carsActions";
+import { deleteCar, getAllCars } from "../../store/actions/carsActions";
 
-import DefaultLayout from "../components/DefaultLayout";
-import Spinner from "../components/Spinner";
+import DefaultLayout from "../../components/DefaultLayout";
+import Spinner from "../../components/Spinner";
 
 const Admin = () => {
   const dispatch = useDispatch();

@@ -2,10 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Form, Input, Select } from "antd";
 
-import { addCar } from "../store/actions/carsActions";
+import { addCar } from "../../store/actions/carsActions";
 
-import DefaultLayout from "../components/DefaultLayout";
-import Spinner from "../components/Spinner";
+import DefaultLayout from "../../components/DefaultLayout";
+import Spinner from "../../components/Spinner";
 
 const { Option } = Select;
 

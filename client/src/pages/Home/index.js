@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { Col, Row, DatePicker } from "antd";
 import moment from "moment";
 
-import { getAllCars } from "../store/actions/carsActions";
+import { getAllCars } from "../../store/actions/carsActions";
 
-import DefaultLayout from "../components/DefaultLayout";
-import Spinner from "../components/Spinner";
+import DefaultLayout from "../../components/DefaultLayout";
+import Spinner from "../../components/Spinner";
 
 const { RangePicker } = DatePicker;
 

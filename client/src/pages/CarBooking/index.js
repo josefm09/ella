@@ -4,11 +4,11 @@ import moment from "moment";
 import StripeCheckout from "react-stripe-checkout";
 import { Col, Row, Divider, DatePicker, Checkbox, Modal } from "antd";
 
-import { getAllCars } from "../store/actions/carsActions";
-import { bookCar } from "../store/actions/bookingActions";
+import { getAllCars } from "../../store/actions/carsActions";
+import { bookCar } from "../../store/actions/bookingActions";
 
-import DefaultLayout from "../components/DefaultLayout";
-import Spinner from "../components/Spinner";
+import DefaultLayout from "../../components/DefaultLayout";
+import Spinner from "../../components/Spinner";
 
 const { RangePicker } = DatePicker;
 
