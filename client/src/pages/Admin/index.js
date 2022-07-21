@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Col, Row, Popconfirm } from "antd";
+import { Col, Row, Button, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 import { deleteCar, getAllCars } from "../../store/actions/carsActions";
@@ -30,9 +30,9 @@ const Admin = () => {
         <Col lg={20} sm={24}>
           <div className="d-flex justify-content-between align-items-center">
             <h3 className="mt-1 mr-2">Admin Panel</h3>
-            <button className="btn1">
-              <a href="/addcar">ADD CAR</a>
-            </button>
+            <Button type="primary">
+              <a href="/addcar">Add Car</a>
+            </Button>
           </div>
         </Col>
       </Row>

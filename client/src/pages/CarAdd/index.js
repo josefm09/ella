@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Col, Row, Form, Input, Select } from "antd";
+import { Col, Row, Form, Input, Select, Button } from "antd";
 
 import { addCar } from "../../store/actions/carsActions";
 
@@ -73,7 +73,7 @@ const CarAdd = () => {
             </Form.Item>
 
             <div className="text-right">
-              <button className="btn1">Add Car</button>
+              <Button type="primary">Add Car</Button>
             </div>
           </Form>
         </Col>

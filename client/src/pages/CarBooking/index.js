@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import StripeCheckout from "react-stripe-checkout";
-import { Col, Row, Divider, DatePicker, Checkbox, Modal } from "antd";
+import { Col, Row, Divider, DatePicker, Checkbox, Modal, Button } from "antd";
 
 import { getAllCars } from "../../store/actions/carsActions";
 import { bookCar } from "../../store/actions/bookingActions";
@@ -96,14 +96,14 @@ const CarBooking = ({ match }) => {
             onChange={selectTimeSlots}
           />
           <br />
-          <button
-            className="btn1 mt-2"
+          <Button
+            type="primary"
             onClick={() => {
               setShowModal(true);
             }}
           >
             See Booked Slots
-          </button>
+          </Button>
           {from && to && (
             <div>
               <p>
@@ -133,7 +133,7 @@ const CarBooking = ({ match }) => {
                 amount={totalAmount * 100}
                 stripeKey="pk_test_51KEFwfCLH4hE1KANoSGrO4F4bIv74aBAm9jUGMxI2lQzedktY2h8KNNwqG87cvAHEbHeLoyaPXrNbDPINotK6yxB007aOPlyXj"
               >
-                <button className="btn1">Book Now</button>
+                <Button type="primary">Book Now</Button>
               </StripeCheckout>
             </div>
           )}
@@ -149,21 +149,21 @@ const CarBooking = ({ match }) => {
             <div className="p-2">
               {car.bookedTimeSlots.map((slot, idx) => {
                 return (
-                  <button key={idx} className="btn1 mt-2">
+                  <Button key={idx} type="primary">
                     {slot.from} - {slot.to}
-                  </button>
+                  </Button>
                 );
               })}
 
               <div className="text-right mt-5">
-                <button
-                  className="btn1"
+                <Button
+                  type="primary"
                   onClick={() => {
                     setShowModal(false);
                   }}
                 >
                   CLOSE
-                </button>
+                </Button>
               </div>
             </div>
           </Modal>

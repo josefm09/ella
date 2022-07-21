@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Col, Row, Form, Input, Select } from "antd";
+import { Col, Row, Form, Input, Select, Button } from "antd";
 
 import { editCar, getAllCars } from "../../store/actions/carsActions";
 
@@ -96,7 +96,7 @@ const CarEdit = ({ match }) => {
               </Form.Item>
 
               <div className="text-right">
-                <button className="btn1">Edit Car</button>
+                <Button type="primary">Edit Car</Button>
               </div>
             </Form>
           )}

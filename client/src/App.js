@@ -15,9 +15,9 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <ProtectedRoute path="/" exact component={Home} />
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
+        <ProtectedRoute path="/" exact component={Home} />
         <ProtectedRoute path="/booking/:carid" exact component={CarBooking} />
         <ProtectedRoute path="/userbookings" exact component={UserBookings} />
         <ProtectedRoute path="/addcar" exact component={CarAdd} />

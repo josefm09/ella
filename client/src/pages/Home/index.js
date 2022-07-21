@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Col, Row, DatePicker } from "antd";
+import { Col, Row, DatePicker, Button } from "antd";
 import moment from "moment";
 
 import { getAllCars } from "../../store/actions/carsActions";
@@ -81,9 +81,9 @@ const Home = () => {
                   </div>
 
                   <div>
-                    <button className="btn1 mr-2">
+                    <Button type="primary">
                       <Link to={`/booking/${car._id}`}>Book Now</Link>
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
