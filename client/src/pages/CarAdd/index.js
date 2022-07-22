@@ -4,7 +4,6 @@ import { Col, Row, Form, Input, Select, Button } from "antd";
 
 import { addCar } from "../../store/actions/carsActions";
 
-import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const { Option } = Select;
@@ -21,7 +20,7 @@ const CarAdd = () => {
   };
 
   return (
-    <DefaultLayout>
+    <>
       {loading && <Spinner />}
       <Row justify="center mt-5">
         <Col lg={12} sm={24} xs={24} className="p-2">
@@ -78,7 +77,7 @@ const CarAdd = () => {
           </Form>
         </Col>
       </Row>
-    </DefaultLayout>
+    </>
   );
 };
 

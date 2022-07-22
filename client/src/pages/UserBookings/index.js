@@ -5,7 +5,6 @@ import moment from "moment";
 
 import { getAllBookings } from "../../store/actions/bookingActions";
 
-import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const UserBookings = () => {
@@ -21,7 +20,7 @@ const UserBookings = () => {
   }, []);
 
   return (
-    <DefaultLayout>
+    <>
       {loading && <Spinner />}
       <h3 className="text-center mt-2">My Bookings</h3>
 
@@ -77,7 +76,7 @@ const UserBookings = () => {
             })}
         </Col>
       </Row>
-    </DefaultLayout>
+    </>
   );
 };
 
