@@ -1,8 +1,6 @@
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 
 import { Route, BrowserRouter, Redirect } from "react-router-dom";
-
-import DefaultLayout from "./components/DefaultLayout";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -17,16 +15,14 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
+        <ProtectedRoute path="/" exact component={Home} />
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
-        <DefaultLayout>
-          <ProtectedRoute path="/" exact component={Home} />
-          <ProtectedRoute path="/booking/:carid" exact component={CarBooking} />
-          <ProtectedRoute path="/userbookings" exact component={UserBookings} />
-          <ProtectedRoute path="/addcar" exact component={CarAdd} />
-          <ProtectedRoute path="/editcar/:carid" exact component={CarEdit} />
-          <ProtectedRoute path="/admin" exact component={Admin} />
-        </DefaultLayout>
+        <ProtectedRoute path="/booking/:carid" exact component={CarBooking} />
+        <ProtectedRoute path="/userbookings" exact component={UserBookings} />
+        <ProtectedRoute path="/addcar" exact component={CarAdd} />
+        <ProtectedRoute path="/editcar/:carid" exact component={CarEdit} />
+        <ProtectedRoute path="/admin" exact component={Admin} />
       </BrowserRouter>
     </>
   );

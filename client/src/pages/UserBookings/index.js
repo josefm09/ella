@@ -5,6 +5,7 @@ import moment from "moment";
 
 import { getAllBookings } from "../../store/actions/bookingActions";
 
+import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const UserBookings = () => {
@@ -20,7 +21,7 @@ const UserBookings = () => {
   }, []);
 
   return (
-    <>
+    <DefaultLayout>
       {loading && <Spinner />}
       <h3 className="text-center mt-2">My Bookings</h3>
 
@@ -28,7 +29,7 @@ const UserBookings = () => {
         <Col lg={16} sm={24}>
           {bookings
             .filter((o) => o.user === user._id)
-            .map((booking, idx) => {
+            ?.map((booking, idx) => {
               return (
                 <Row key={idx} gutter={16} className="bs1 mt-3 text-left">
                   <Col lg={6} sm={24}>
@@ -76,7 +77,7 @@ const UserBookings = () => {
             })}
         </Col>
       </Row>
-    </>
+    </DefaultLayout>
   );
 };
 

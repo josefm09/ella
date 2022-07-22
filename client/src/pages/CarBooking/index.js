@@ -7,6 +7,7 @@ import { Col, Row, Divider, DatePicker, Checkbox, Modal, Button } from "antd";
 import { getAllCars } from "../../store/actions/carsActions";
 import { bookCar } from "../../store/actions/bookingActions";
 
+import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const { RangePicker } = DatePicker;
@@ -64,7 +65,7 @@ const CarBooking = ({ match }) => {
   };
 
   return (
-    <>
+    <DefaultLayout>
       {loading && <Spinner />}
       <Row
         justify="center"
@@ -146,7 +147,7 @@ const CarBooking = ({ match }) => {
             title="Booked time slots"
           >
             <div className="p-2">
-              {car.bookedTimeSlots.map((slot, idx) => {
+              {car.bookedTimeSlots?.map((slot, idx) => {
                 return (
                   <Button key={idx} type="primary">
                     {slot.from} - {slot.to}
@@ -168,7 +169,7 @@ const CarBooking = ({ match }) => {
           </Modal>
         )}
       </Row>
-    </>
+    </DefaultLayout>
   );
 };
 

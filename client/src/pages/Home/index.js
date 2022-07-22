@@ -6,6 +6,7 @@ import moment from "moment";
 
 import { getAllCars } from "../../store/actions/carsActions";
 
+import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const { RangePicker } = DatePicker;
@@ -53,7 +54,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <DefaultLayout>
       <Row className="mt-3" justify="center">
         <Col lg={20} sm={24} className="d-flex justify-content-left">
           <RangePicker
@@ -67,7 +68,7 @@ const Home = () => {
       {loading === true && <Spinner />}
 
       <Row justify="center" gutter={16}>
-        {totalCars.map((car) => {
+        {totalCars?.map((car) => {
           return (
             <Col key={car._id} lg={5} sm={24} xs={24}>
               <div className="car p-2 bs1">
@@ -90,7 +91,7 @@ const Home = () => {
           );
         })}
       </Row>
-    </>
+    </DefaultLayout>
   );
 };
 

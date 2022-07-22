@@ -6,6 +6,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 import { deleteCar, getAllCars } from "../../store/actions/carsActions";
 
+import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const Admin = () => {
@@ -24,7 +25,7 @@ const Admin = () => {
   }, [cars]);
 
   return (
-    <>
+    <DefaultLayout>
       <Row justify="center" gutter={16} className="mt-2">
         <Col lg={20} sm={24}>
           <div className="d-flex justify-content-between align-items-center">
@@ -39,7 +40,7 @@ const Admin = () => {
       {loading === true && <Spinner />}
 
       <Row justify="center" gutter={16}>
-        {totalCars.map((car) => {
+        {totalCars?.map((car) => {
           return (
             <Col key={car._id} lg={5} sm={24} xs={24}>
               <div className="car p-2 bs1">
@@ -78,7 +79,7 @@ const Admin = () => {
           );
         })}
       </Row>
-    </>
+    </DefaultLayout>
   );
 };
 
