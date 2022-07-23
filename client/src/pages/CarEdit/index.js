@@ -15,6 +15,7 @@ const CarEdit = ({ match }) => {
   const { loading } = useSelector((state) => state.alertsReducer);
   const [car, setCar] = useState();
   const [totalCars, setTotalCars] = useState([]);
+
   useEffect(() => {
     if (cars.length === 0) {
       dispatch(getAllCars());
@@ -32,9 +33,12 @@ const CarEdit = ({ match }) => {
     console.log(values);
   };
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <DefaultLayout>
-      {loading && <Spinner />}
       <Row justify="center mt-5">
         <Col lg={12} sm={24} xs={24} className="p-2">
           {totalCars.length > 0 && (

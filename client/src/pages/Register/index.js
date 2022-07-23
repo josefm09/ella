@@ -17,9 +17,12 @@ const Register = () => {
     dispatch(userRegister(values));
   };
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <div className="login">
-      {loading && <Spinner />}
       <Row gutter={16} className="d-flex align-items-center">
         <Col md={12} lg={14} style={{ position: "relative" }}>
           <img alt="car" className="w-100" src="../../images/off_road.svg" />

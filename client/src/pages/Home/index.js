@@ -53,6 +53,10 @@ const Home = () => {
     setTotalCars(temp);
   };
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <DefaultLayout>
       <Row className="mt-3" justify="center">
@@ -64,8 +68,6 @@ const Home = () => {
           />
         </Col>
       </Row>
-
-      {loading === true && <Spinner />}
 
       <Row justify="center" gutter={16}>
         {totalCars?.map((car) => {

@@ -24,6 +24,10 @@ const Admin = () => {
     setTotalCars(cars);
   }, [cars]);
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <DefaultLayout>
       <Row justify="center" gutter={16} className="mt-2">
@@ -36,8 +40,6 @@ const Admin = () => {
           </div>
         </Col>
       </Row>
-
-      {loading === true && <Spinner />}
 
       <Row justify="center" gutter={16}>
         {totalCars?.map((car) => {

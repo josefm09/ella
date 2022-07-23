@@ -20,9 +20,12 @@ const UserBookings = () => {
     dispatch(getAllBookings());
   }, []);
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <DefaultLayout>
-      {loading && <Spinner />}
       <h3 className="text-center mt-2">My Bookings</h3>
 
       <Row justify="center" gutter={16}>

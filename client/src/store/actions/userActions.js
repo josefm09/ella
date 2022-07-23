@@ -28,8 +28,8 @@ export const userRegister = (reqObj) => async (dispatch) => {
     setTimeout(() => {
       window.location.href = "/login";
     }, 500);
-
     dispatch({ type: "LOADING", payload: false });
+    return res.data;
   } catch (error) {
     console.log(error);
     message.error("Something went wrong!");

@@ -40,6 +40,10 @@ const CarBooking = ({ match }) => {
     }
   }, [driver, totalHours]);
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   const selectTimeSlots = (values) => {
     setFrom(moment(values[0]).format("MMM DD yyyy HH:mm"));
     setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
@@ -66,7 +70,6 @@ const CarBooking = ({ match }) => {
 
   return (
     <DefaultLayout>
-      {loading && <Spinner />}
       <Row
         justify="center"
         className="d-flex align-items-center"

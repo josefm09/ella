@@ -1,5 +1,3 @@
-import "antd/dist/antd.min.css";
-
 import { Route, BrowserRouter, Redirect } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -10,6 +8,8 @@ import UserBookings from "./pages/UserBookings";
 import CarAdd from "./pages/CarAdd";
 import Admin from "./pages/Admin";
 import CarEdit from "./pages/CarEdit";
+
+import "antd/dist/antd.min.css";
 
 const App = () => {
   return (
