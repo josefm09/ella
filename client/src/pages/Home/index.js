@@ -59,7 +59,7 @@ const Home = () => {
 
   return (
     <DefaultLayout>
-      <Row className="mt-3" justify="center">
+      <Row className="mb-3" justify="center">
         <Col lg={20} sm={24} className="d-flex justify-content-left">
           <RangePicker
             showTime={{ format: "HH:mm" }}
