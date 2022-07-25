@@ -8,6 +8,8 @@ import { userRegister } from "../../store/actions/userActions";
 
 import Spinner from "../../components/Spinner";
 
+import bg from "../../assets/images/off_road.svg";
+
 export default function Register() {
   const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ export default function Register() {
     <div className="login">
       <Row gutter={16} className="d-flex align-items-center">
         <Col md={12} lg={14} style={{ position: "relative" }}>
-          <img alt="car" className="w-100" src="../../images/off_road.svg" />
+          <img alt="car" className="w-100" src={bg} />
         </Col>
         <Col md={12} lg={8} className="text-left p-5">
           <Form
