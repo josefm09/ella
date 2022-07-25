@@ -1,10 +1,9 @@
 import React from "react";
-//import { Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const DefaultLayout = (props) => {
+export default function DefaultLayout(props) {
   return (
     <Layout>
       <Sider
@@ -61,6 +60,4 @@ const DefaultLayout = (props) => {
       </Layout>
     </Layout>
   );
-};
-
-export default DefaultLayout;
+}

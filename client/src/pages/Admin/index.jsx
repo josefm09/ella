@@ -9,7 +9,7 @@ import { deleteCar, getAllCars } from "../../store/actions/carsActions";
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
-const Admin = () => {
+export default function Admin() {
   const dispatch = useDispatch();
 
   const { cars } = useSelector((state) => state.carsReducer);
@@ -83,6 +83,4 @@ const Admin = () => {
       </Row>
     </DefaultLayout>
   );
-};
-
-export default Admin;
+}

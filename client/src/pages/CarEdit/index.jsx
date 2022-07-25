@@ -9,7 +9,7 @@ import Spinner from "../../components/Spinner";
 
 const { Option } = Select;
 
-const CarEdit = ({ match }) => {
+export default function CarEdit({ match }) {
   const { cars } = useSelector((state) => state.carsReducer);
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
@@ -108,6 +108,4 @@ const CarEdit = ({ match }) => {
       </Row>
     </DefaultLayout>
   );
-};
-
-export default CarEdit;
+}

@@ -11,22 +11,20 @@ import CarEdit from "./pages/CarEdit";
 
 import "antd/dist/antd.min.css";
 
-const App = () => {
+export default function App() {
   return (
-    <>
-      <BrowserRouter>
-        <ProtectedRoute path="/" exact component={Home} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" exact component={Register} />
-        <ProtectedRoute path="/booking/:carid" exact component={CarBooking} />
-        <ProtectedRoute path="/userbookings" exact component={UserBookings} />
-        <ProtectedRoute path="/addcar" exact component={CarAdd} />
-        <ProtectedRoute path="/editcar/:carid" exact component={CarEdit} />
-        <ProtectedRoute path="/admin" exact component={Admin} />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <ProtectedRoute path="/" exact component={Home} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/register" exact component={Register} />
+      <ProtectedRoute path="/booking/:carid" exact component={CarBooking} />
+      <ProtectedRoute path="/userbookings" exact component={UserBookings} />
+      <ProtectedRoute path="/addcar" exact component={CarAdd} />
+      <ProtectedRoute path="/editcar/:carid" exact component={CarEdit} />
+      <ProtectedRoute path="/admin" exact component={Admin} />
+    </BrowserRouter>
   );
-};
+}
 
 export const ProtectedRoute = (props) => {
   if (localStorage.getItem("user")) {
@@ -35,5 +33,3 @@ export const ProtectedRoute = (props) => {
     return <Redirect to="/login" />;
   }
 };
-
-export default App;

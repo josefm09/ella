@@ -9,7 +9,7 @@ import Spinner from "../../components/Spinner";
 
 const { Option } = Select;
 
-const CarAdd = () => {
+export default function CarAdd() {
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.alertsReducer);
@@ -83,6 +83,4 @@ const CarAdd = () => {
       </Row>
     </DefaultLayout>
   );
-};
-
-export default CarAdd;
+}

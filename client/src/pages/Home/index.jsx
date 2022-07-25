@@ -11,7 +11,7 @@ import Spinner from "../../components/Spinner";
 
 const { RangePicker } = DatePicker;
 
-const Home = () => {
+export default function Home() {
   const dispatch = useDispatch();
 
   const { cars } = useSelector((state) => state.carsReducer);
@@ -95,6 +95,4 @@ const Home = () => {
       </Row>
     </DefaultLayout>
   );
-};
-
-export default Home;
+}

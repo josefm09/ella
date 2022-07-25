@@ -8,7 +8,7 @@ import { getAllBookings } from "../../store/actions/bookingActions";
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
-const UserBookings = () => {
+export default function UserBookings() {
   const dispatch = useDispatch();
 
   const { bookings } = useSelector((state) => state.bookingsReducer);
@@ -82,6 +82,4 @@ const UserBookings = () => {
       </Row>
     </DefaultLayout>
   );
-};
-
-export default UserBookings;
+}

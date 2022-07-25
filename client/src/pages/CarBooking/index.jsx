@@ -12,7 +12,7 @@ import Spinner from "../../components/Spinner";
 
 const { RangePicker } = DatePicker;
 
-const CarBooking = ({ match }) => {
+export default function CarBooking({ match }) {
   const dispatch = useDispatch();
 
   const { cars } = useSelector((state) => state.carsReducer);
@@ -174,6 +174,4 @@ const CarBooking = ({ match }) => {
       </Row>
     </DefaultLayout>
   );
-};
-
-export default CarBooking;
+}
