@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 export default function DefaultLayout(props) {
   return (
@@ -39,7 +39,6 @@ export default function DefaultLayout(props) {
       </Sider>
 
       <Layout>
-        <Header style={{ background: "#fff", padding: 0 }} />
         <Content style={{ margin: "24px 16px 0" }}>
           <div className="content">{props.children}</div>
         </Content>
