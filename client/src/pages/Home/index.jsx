@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Col, Row, DatePicker, Button } from "antd";
+import { Col, Row, DatePicker, Button, Card } from "antd";
 import moment from "moment";
 
 import { getAllCars } from "../../store/actions/carsActions";
@@ -72,23 +72,21 @@ export default function Home() {
       <Row justify="center" gutter={16}>
         {totalCars?.map((car) => {
           return (
-            <Col key={car._id} lg={5} sm={24} xs={24}>
-              <div className="car p-2 bs1">
-                <img src={car.image} alt={car.name} className="carimg" />
-
-                <div className="d-flex align-items-center justify-content-between">
-                  <div className="text-left pl-2">
-                    <p>{car.name}</p>
-                    <p>{car.costPerHour} KR Per Hour</p>
-                  </div>
-
-                  <div>
-                    <Button type="primary">
-                      <Link to={`/booking/${car._id}`}>Book Now</Link>
-                    </Button>
-                  </div>
+            <Col key={car._id} lg={5} sm={20} xs={24}>
+              <Card
+                title={car.name}
+                style={{
+                  width: 300,
+                }}
+                cover={<img alt={car.name} src={car.image} />}
+              >
+                <div className="card-footer-container">
+                  {car.costPerHour} KR Per Hour
+                  <Button type="primary">
+                    <Link to={`/booking/${car._id}`}>Book Now</Link>
+                  </Button>
                 </div>
-              </div>
+              </Card>
             </Col>
           );
         })}
