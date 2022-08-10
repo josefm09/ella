@@ -4,38 +4,57 @@ import { Layout, Menu } from "antd";
 const { Content, Footer, Sider } = Layout;
 
 export default function DefaultLayout(props) {
+  const onMenuClick = (e) => {
+    const { key } = e;
+    if (key === "logout") {
+      localStorage.removeItem("user");
+    }
+  };
+
+  const menuItems = [
+    {
+      key: "home",
+      label: (
+        <a rel="noopener noreferrer" href="/">
+          Home
+        </a>
+      ),
+    },
+    {
+      key: "bookings",
+      label: (
+        <a rel="noopener noreferrer" href="/userbookings">
+          Bookings
+        </a>
+      ),
+    },
+    {
+      key: "admin",
+      label: (
+        <a rel="noopener noreferrer" href="/admin">
+          Admin
+        </a>
+      ),
+    },
+    {
+      key: "logout",
+      label: (
+        <a rel="noopener noreferrer" href="/login">
+          Logout
+        </a>
+      ),
+    },
+  ];
+
   return (
     <Layout>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-      >
-        <Menu theme="dark" mode="inline">
-          <Menu.Item key="1">
-            <a href="/">Home</a>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <a href="/userbookings">Bookings</a>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <a href="/admin">Admin</a>
-          </Menu.Item>
-          <Menu.Item
-            key="4"
-            onClick={() => {
-              localStorage.removeItem("user");
-              window.location.href = "/login";
-            }}
-          >
-            <div>Logout</div>
-          </Menu.Item>
-        </Menu>
+      <Sider breakpoint="lg" collapsedWidth="0">
+        <Menu
+          theme="dark"
+          mode="inline"
+          items={menuItems}
+          onClick={onMenuClick}
+        />
       </Sider>
 
       <Layout>

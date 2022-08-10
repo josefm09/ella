@@ -53,44 +53,46 @@ export default function Home() {
     setTotalCars(temp);
   };
 
-  if (loading) {
-    return <Spinner />;
-  }
-
   return (
-    <DefaultLayout>
-      <Row className="mb-3" justify="center">
-        <Col lg={20} sm={24} className="d-flex justify-content-left">
-          <RangePicker
-            showTime={{ format: "HH:mm" }}
-            format="MMM DD yyyy HH:mm"
-            onChange={setFilter}
-          />
-        </Col>
-      </Row>
-
-      <Row justify="center" gutter={16}>
-        {totalCars?.map((car) => {
-          return (
-            <Col key={car._id} lg={5} sm={20} xs={24}>
-              <Card
-                title={car.name}
-                style={{
-                  width: 300,
-                }}
-                cover={<img alt={car.name} src={car.image} />}
-              >
-                <div className="card-footer-container">
-                  {car.costPerHour} KR Per Hour
-                  <Button type="primary">
-                    <Link to={`/booking/${car._id}`}>Book Now</Link>
-                  </Button>
-                </div>
-              </Card>
+    <>
+      {loading === false ? (
+        <DefaultLayout>
+          <Row className="mb-3" justify="center">
+            <Col lg={20} sm={24} className="d-flex justify-content-left">
+              <RangePicker
+                showTime={{ format: "HH:mm" }}
+                format="MMM DD yyyy HH:mm"
+                onChange={setFilter}
+              />
             </Col>
-          );
-        })}
-      </Row>
-    </DefaultLayout>
+          </Row>
+
+          <Row justify="center" gutter={16}>
+            {totalCars?.map((car) => {
+              return (
+                <Col key={car._id} lg={5} sm={20} xs={24}>
+                  <Card
+                    title={car.name}
+                    style={{
+                      width: 300,
+                    }}
+                    cover={<img alt={car.name} src={car.image} />}
+                  >
+                    <div className="card-footer-container">
+                      {car.costPerHour} KR Per Hour
+                      <Button type="primary">
+                        <Link to={`/booking/${car._id}`}>Book Now</Link>
+                      </Button>
+                    </div>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </DefaultLayout>
+      ) : (
+        <Spinner />
+      )}
+    </>
   );
 }
