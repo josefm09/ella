@@ -4,15 +4,14 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node": "16.17.0"
+    "node": "14.17.1",
+    "npm": "6.14.13"
   },
   "scripts": {
     "start": "nodemon server.js",
     "server": "nodemon server.js --ignore './client/'",
-    "client": "yarn --cwd ./client run start",
-    "client-install": "yarn --cwd client",
-    "client-build": "yarn --cwd client run build",
-    "dev": "concurrently \"yarn server\" \"yarn client\""
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
