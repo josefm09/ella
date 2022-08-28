@@ -3,16 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "engines": {
-    "node": "16.17.0",
-    "npm": "8.15.0"
-  },
   "scripts": {
     "start": "nodemon server.js",
     "server": "nodemon server.js --ignore './client/'",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "client": "yarn --cwd ../client run start",
+    "client:install": "yarn --cwd client add",
+    "client:build": "yarn --cwd client run build",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "author": "",
   "license": "ISC",
