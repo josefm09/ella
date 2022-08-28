@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "server": "nodemon server.js --ignore './client/'",
+    "server": "nodemon server.js --ignore '../client/'",
     "client": "yarn --cwd ../client run start",
     "client:install": "yarn --cwd client add",
     "client:build": "yarn --cwd client run build",
