@@ -10,7 +10,7 @@
     "start": "nodemon server.js",
     "server": "nodemon server.js --ignore './client/'",
     "client": "yarn --cwd ./client run start",
-    "client-install": "yarn --cwd client add",
+    "client-install": "yarn --cwd client",
     "client-build": "yarn --cwd client run build",
     "dev": "concurrently \"yarn server\" \"yarn client\""
   },
