@@ -81,9 +81,9 @@ export default function CarAdd() {
                   <Input />
                 </Form.Item>
 
-                <div className="text-right">
-                  <Button type="primary">Add Car</Button>
-                </div>
+                <Button type="primary" htmlType="submit">
+                  Add Car
+                </Button>
               </Form>
             </Col>
           </Row>

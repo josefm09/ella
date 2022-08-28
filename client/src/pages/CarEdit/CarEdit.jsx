@@ -10,11 +10,12 @@ import Spinner from "../../components/Spinner";
 const { Option } = Select;
 
 export default function CarEdit({ match }) {
-  const { cars } = useSelector((state) => state.carsReducer);
-  const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
+  const { cars } = useSelector((state) => state.carsReducer);
   const [car, setCar] = useState();
   const [totalCars, setTotalCars] = useState([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (cars.length === 0) {
@@ -101,9 +102,9 @@ export default function CarEdit({ match }) {
                     <Input />
                   </Form.Item>
 
-                  <div className="text-right">
-                    <Button type="primary">Edit Car</Button>
-                  </div>
+                  <Button type="primary" htmlType="submit">
+                    Edit Car
+                  </Button>
                 </Form>
               )}
             </Col>
