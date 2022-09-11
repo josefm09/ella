@@ -132,7 +132,6 @@ export default function CarBooking({ match }) {
                   <h3>Total Cost: {totalAmount}</h3>
 
                   <StripeCheckout
-                    shippingAddress
                     token={onToken}
                     currency="NOK"
                     amount={totalAmount * 100}
