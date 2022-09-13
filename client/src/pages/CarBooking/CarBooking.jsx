@@ -17,6 +17,7 @@ export default function CarBooking({ match }) {
 
   const { cars } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
+
   const [car, setCar] = useState({});
   const [from, setFrom] = useState();
   const [to, setTo] = useState();

@@ -9,9 +9,7 @@ export const userLogin = (reqObj) => async (dispatch) => {
     localStorage.setItem("user", JSON.stringify(res.data));
     message.success("Login success!");
     dispatch({ type: "LOADING", payload: false });
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 500);
+    window.location.href = "/";
   } catch (error) {
     console.log(error);
     message.error("Something went wrong!");
@@ -25,9 +23,7 @@ export const userRegister = (reqObj) => async (dispatch) => {
   try {
     const res = await axios.post("/api/users/register", reqObj);
     message.success("Registration successful!");
-    setTimeout(() => {
-      window.location.href = "/login";
-    }, 500);
+    window.location.href = "/login";
     dispatch({ type: "LOADING", payload: false });
     return res.data;
   } catch (error) {
