@@ -75,11 +75,7 @@ export default function CarBooking({ match }) {
             style={{ minHeight: "90vh" }}
           >
             <Col lg={10} sm={24} xs={24} className="p-3">
-              <img
-                src={car.image}
-                alt={car.name}
-                className="carimg2 bs1 w-100"
-              />
+              <img src={car.image} alt={car.name} className="car-img" />
             </Col>
 
             <Col lg={10} sm={24} xs={24} className="text-right">

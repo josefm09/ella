@@ -16,6 +16,7 @@ export default function Home() {
 
   const { cars } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
+
   const [totalCars, setTotalCars] = useState([]);
 
   useEffect(() => {

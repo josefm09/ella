@@ -24,9 +24,9 @@ export default function CarAdd() {
     <>
       {loading === false ? (
         <DefaultLayout>
-          <Row justify="center mt-5">
-            <Col lg={12} sm={24} xs={24} className="p-2">
-              <Form className="bs1 p-2" layout="vertical" onFinish={onFinish}>
+          <Row justify="center">
+            <Col lg={12} sm={24} xs={24}>
+              <Form layout="vertical" onFinish={onFinish}>
                 <h3>Add New Car</h3>
                 <hr />
                 <Form.Item
