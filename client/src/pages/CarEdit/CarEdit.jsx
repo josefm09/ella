@@ -97,9 +97,14 @@ export default function CarEdit({ match }) {
                     <Input />
                   </Form.Item>
 
-                  <Button type="primary" htmlType="submit">
-                    Edit Car
-                  </Button>
+                  <div className="button-group">
+                    <Button type="danger" href="/admin">
+                      Cancel
+                    </Button>
+                    <Button type="primary" htmlType="submit">
+                      Edit Car
+                    </Button>
+                  </div>
                 </Form>
               )}
             </Col>

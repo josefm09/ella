@@ -80,10 +80,14 @@ export default function CarAdd() {
                 >
                   <Input />
                 </Form.Item>
-
-                <Button type="primary" htmlType="submit">
-                  Add Car
-                </Button>
+                <div className="button-group">
+                  <Button type="danger" href="/admin">
+                    Cancel
+                  </Button>
+                  <Button type="primary" htmlType="submit">
+                    Add Car
+                  </Button>
+                </div>
               </Form>
             </Col>
           </Row>

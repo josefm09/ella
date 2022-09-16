@@ -33,8 +33,8 @@ export default function Admin() {
             <Col lg={20} sm={24}>
               <div className="d-flex justify-content-between align-items-center">
                 <h3 className="mt-1 mr-2">Admin Panel</h3>
-                <Button type="primary">
-                  <a href="/addcar">Add Car</a>
+                <Button type="primary" href="/addcar">
+                  Add Car
                 </Button>
               </div>
             </Col>
