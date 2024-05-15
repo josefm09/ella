@@ -16,7 +16,7 @@ export default function DefaultLayout(props) {
       key: "home",
       label: (
         <a rel="noopener noreferrer" href="/">
-          Home
+          Inicio
         </a>
       ),
     },
@@ -24,7 +24,7 @@ export default function DefaultLayout(props) {
       key: "bookings",
       label: (
         <a rel="noopener noreferrer" href="/userbookings">
-          Bookings
+          Vestidos reservados
         </a>
       ),
     },
@@ -32,7 +32,7 @@ export default function DefaultLayout(props) {
       key: "admin",
       label: (
         <a rel="noopener noreferrer" href="/admin">
-          Admin
+          Administración
         </a>
       ),
     },
@@ -40,7 +40,7 @@ export default function DefaultLayout(props) {
       key: "logout",
       label: (
         <a rel="noopener noreferrer" href="/login">
-          Logout
+          Salir
         </a>
       ),
     },
@@ -68,11 +68,7 @@ export default function DefaultLayout(props) {
           }}
         >
           <p>
-            &copy; {new Date().getFullYear()} Made with{" "}
-            <span role="img" aria-label="heart">
-              ❤️
-            </span>{" "}
-            by Shane Le
+            Ella dress rental
           </p>
         </Footer>
       </Layout>

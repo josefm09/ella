@@ -23,7 +23,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use("/api/cars/", require("./routes/carsRoute"));
+app.use("/api/vestidos/", require("./routes/carsRoute"));
 app.use("/api/users/", require("./routes/usersRoute"));
 app.use("/api/bookings/", require("./routes/bookingsRoute"));
 

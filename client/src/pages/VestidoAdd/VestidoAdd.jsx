@@ -2,14 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Form, Input, Select, Button } from "antd";
 
-import { addCar } from "../../store/actions/carsActions";
+import { addVestido } from "../../store/actions/carsActions";
 
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const { Option } = Select;
 
-export default function CarAdd() {
+export default function VestidoAdd() {
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.alertsReducer);
@@ -17,7 +17,7 @@ export default function CarAdd() {
   const onFinish = (values) => {
     values.bookedTimeSlots = [];
 
-    dispatch(addCar(values));
+    dispatch(addVestido(values));
   };
 
   return (
@@ -27,36 +27,40 @@ export default function CarAdd() {
           <Row justify="center">
             <Col lg={12} sm={24} xs={24}>
               <Form layout="vertical" onFinish={onFinish}>
-                <h3>Add New Car</h3>
+                <h3>Agregar nuevo vestido</h3>
                 <hr />
                 <Form.Item
                   name="name"
-                  label="Name"
+                  label="Nombre"
                   rules={[{ required: true }]}
                 >
                   <Input />
                 </Form.Item>
                 <Form.Item
-                  name="transmission"
-                  label="Transmission"
+                  name="talla"
+                  label="Talla"
                   rules={[{ required: true }]}
                 >
                   <Select
-                    name="transmission"
-                    placeholder="Please select car transmission."
+                    name="talla"
+                    placeholder="Porfavor selecciona talla del vestido."
                   >
-                    <Option value="Automatic">Automatic</Option>
-                    <Option value="Manual">Manual</Option>
+                    <Option value="XS">XS</Option>
+                    <Option value="S">S</Option>
+                    <Option value="M">M</Option>
+                    <Option value="L">L</Option>
+                    <Option value="XL">XL</Option>
+                    <Option value="XXL">XXL</Option>
                   </Select>
                 </Form.Item>
-                <Form.Item
+                {/* <Form.Item
                   name="seats"
                   label="Seats"
                   rules={[{ required: true }]}
                 >
                   <Select
                     name="seats"
-                    placeholder="Please select car seats amount."
+                    placeholder="Please select vestido seats amount."
                   >
                     <Option value="2">2</Option>
                     <Option value="3">3</Option>
@@ -65,27 +69,27 @@ export default function CarAdd() {
                     <Option value="6">6</Option>
                     <Option value="7">7</Option>
                   </Select>
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item
                   name="image"
-                  label="Image URL"
+                  label="Link de la imagen del vestido"
                   rules={[{ required: true }]}
                 >
                   <Input />
                 </Form.Item>
                 <Form.Item
-                  name="costPerHour"
-                  label="Cost Per Hour"
+                  name="costPerDay"
+                  label="Costo por día"
                   rules={[{ required: true }]}
                 >
                   <Input />
                 </Form.Item>
                 <div className="button-group">
                   <Button type="danger" href="/admin">
-                    Cancel
+                    Cancelar
                   </Button>
                   <Button type="primary" htmlType="submit">
-                    Add Car
+                    Agregar Vestido
                   </Button>
                 </div>
               </Form>

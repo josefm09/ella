@@ -12,7 +12,7 @@ import Spinner from "../../components/Spinner";
 export default function Admin() {
   const dispatch = useDispatch();
 
-  const { cars } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
 
   const [totalCars, setTotalCars] = useState([]);
@@ -22,8 +22,8 @@ export default function Admin() {
   }, []);
 
   useEffect(() => {
-    setTotalCars(cars);
-  }, [cars]);
+    setTotalCars(vestidos);
+  }, [vestidos]);
 
   return (
     <>
@@ -32,37 +32,37 @@ export default function Admin() {
           <Row justify="center" gutter={16} className="mt-2">
             <Col lg={20} sm={24}>
               <div className="d-flex justify-content-between align-items-center">
-                <h3 className="mt-1 mr-2">Admin Panel</h3>
-                <Button type="primary" href="/addcar">
-                  Add Car
+                <h3 className="mt-1 mr-2">Panel administrativo</h3>
+                <Button type="primary" href="/addvestido">
+                  Agregar Vestido
                 </Button>
               </div>
             </Col>
           </Row>
 
           <Row justify="center" gutter={16}>
-            {totalCars?.map((car) => {
+            {totalCars?.map((vestido) => {
               return (
-                <Col key={car._id} lg={5} sm={20} xs={24}>
+                <Col key={vestido._id} lg={5} sm={20} xs={24}>
                   <Card
-                    title={car.name}
+                    title={vestido.name}
                     style={{
                       width: 300,
                     }}
-                    cover={<img alt={car.name} src={car.image} />}
+                    cover={<img alt={vestido.name} src={vestido.image} />}
                     actions={[
-                      <Link to={`/editcar/${car._id}`}>
+                      <Link to={`/editvestido/${vestido._id}`}>
                         <EditOutlined
                           key="edit"
                           style={{ color: "green", cursor: "pointer" }}
                         />
                       </Link>,
                       <Popconfirm
-                        title="Are you sure to delete this car?"
+                        title="Estás seguro que deseas eliminar el vestido?"
                         onConfirm={() => {
-                          dispatch(deleteCar({ carid: car._id }));
+                          dispatch(deleteCar({ carid: vestido._id }));
                         }}
-                        okText="Yes"
+                        okText="Si"
                         cancelText="No"
                       >
                         <DeleteOutlined
@@ -72,7 +72,7 @@ export default function Admin() {
                       </Popconfirm>,
                     ]}
                   >
-                    {car.costPerHour} KR Per Hour
+                    {vestido.costPerDay} MXN Por día
                   </Card>
                 </Col>
               );

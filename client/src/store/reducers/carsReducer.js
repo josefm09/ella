@@ -1,5 +1,5 @@
 const initialData = {
-  cars: [],
+  vestidos: [],
 };
 
 export const carsReducer = (state = initialData, action) => {
@@ -7,7 +7,7 @@ export const carsReducer = (state = initialData, action) => {
     case "GET_ALL_CARS": {
       return {
         ...state,
-        cars: action.payload,
+        vestidos: action.payload,
       };
     }
 

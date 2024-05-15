@@ -25,7 +25,7 @@ export default function Login() {
         <section className="login-page">
           <div className="left-column">
             <div className="illustration-wrapper">
-              <img alt="car" src={bg} />
+              <img alt="vestido" src={bg} />
             </div>
           </div>
 

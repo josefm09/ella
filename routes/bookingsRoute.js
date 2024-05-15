@@ -5,9 +5,9 @@ const stripe = require("stripe")(keys.stripeSecretKey);
 const { v4: uuidv4 } = require("uuid");
 
 const Booking = require("../models/bookingModel");
-const Car = require("../models/carModel");
+const Vestido = require("../models/vestidoModel");
 
-router.post("/bookcar", async (req, res) => {
+router.post("/reservar", async (req, res) => {
   const { token } = req.body;
   try {
     const customer = await stripe.customers.create({
@@ -31,11 +31,11 @@ router.post("/bookcar", async (req, res) => {
       req.body.transactionId = payment.source.id;
       const newBooking = new Booking(req.body);
       await newBooking.save();
-      const car = await Car.findOne({ _id: req.body.car });
-      console.log(req.body.car);
-      car.bookedTimeSlots.push(req.body.bookedTimeSlots);
+      const vestido = await Vestido.findOne({ _id: req.body.vestido });
+      console.log(req.body.vestido);
+      vestido.bookedTimeSlots.push(req.body.bookedTimeSlots);
 
-      await car.save();
+      await vestido.save();
       res.send("Your booking is successful!");
     } else {
       return res.status(400).json(error);
@@ -48,7 +48,7 @@ router.post("/bookcar", async (req, res) => {
 
 router.get("/getallbookings", async (req, res) => {
   try {
-    const bookings = await Booking.find().populate("car");
+    const bookings = await Booking.find().populate("vestido");
     res.send(bookings);
   } catch (error) {
     return res.status(400).json(error);

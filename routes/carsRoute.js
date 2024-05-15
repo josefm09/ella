@@ -1,49 +1,49 @@
 const express = require("express");
 const router = express.Router();
 
-const Car = require("../models/carModel");
+const Vestido = require("../models/vestidoModel");
 
-router.get("/getallcars", async (req, res) => {
+router.get("/getallvestidos", async (req, res) => {
   try {
-    const cars = await Car.find();
-    res.send(cars);
+    const vestidos = await Vestido.find();
+    res.send(vestidos);
   } catch (error) {
     return res.status(400).json(error);
   }
 });
 
-router.post("/addcar", async (req, res) => {
+router.post("/addvestido", async (req, res) => {
   try {
-    const newCar = new Car(req.body);
+    const newCar = new Vestido(req.body);
     await newCar.save();
-    res.send("Car added successfully");
+    res.send("Vestido added successfully");
   } catch (error) {
     return res.status(400).json(error);
   }
 });
 
-router.post("/editcar", async (req, res) => {
+router.post("/editvestido", async (req, res) => {
   try {
-    const car = await Car.findOne({ _id: req.body._id });
-    car.name = req.body.name;
-    car.image = req.body.image;
-    car.transmission = req.body.transmission;
-    car.costPerHour = req.body.costPerHour;
-    car.seats = req.body.seats;
+    const vestido = await Vestido.findOne({ _id: req.body._id });
+    vestido.name = req.body.name;
+    vestido.image = req.body.image;
+    vestido.talla = req.body.talla;
+    vestido.costPerDay = req.body.costPerDay;
+    vestido.seats = req.body.seats;
 
-    await car.save();
+    await vestido.save();
 
-    res.send("Car details updated successfully");
+    res.send("Vestido details updated successfully");
   } catch (error) {
     return res.status(400).json(error);
   }
 });
 
-router.post("/deletecar", async (req, res) => {
+router.post("/deletevestido", async (req, res) => {
   try {
-    await Car.findOneAndDelete({ _id: req.body.carid });
+    await Vestido.findOneAndDelete({ _id: req.body.carid });
 
-    res.send("Car deleted successfully");
+    res.send("Vestido deleted successfully");
   } catch (error) {
     return res.status(400).json(error);
   }

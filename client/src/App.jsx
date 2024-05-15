@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CarBooking from "./pages/CarBooking";
 import UserBookings from "./pages/UserBookings";
-import CarAdd from "./pages/CarAdd";
+import VestidoAdd from "./pages/VestidoAdd";
 import Admin from "./pages/Admin";
 import CarEdit from "./pages/CarEdit";
 
@@ -19,8 +19,8 @@ export default function App() {
       <Route path="/register" exact component={Register} />
       <ProtectedRoute path="/booking/:carid" exact component={CarBooking} />
       <ProtectedRoute path="/userbookings" exact component={UserBookings} />
-      <ProtectedRoute path="/addcar" exact component={CarAdd} />
-      <ProtectedRoute path="/editcar/:carid" exact component={CarEdit} />
+      <ProtectedRoute path="/addvestido" exact component={VestidoAdd} />
+      <ProtectedRoute path="/editvestido/:carid" exact component={CarEdit} />
       <ProtectedRoute path="/admin" exact component={Admin} />
     </BrowserRouter>
   );

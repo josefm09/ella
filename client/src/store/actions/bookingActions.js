@@ -5,10 +5,10 @@ export const bookCar = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.post("/api/bookings/bookcar", reqObj);
+    await axios.post("/api/bookings/reservar", reqObj);
 
     dispatch({ type: "LOADING", payload: false });
-    message.success("Your car booked successfully");
+    message.success("Your vestido booked successfully");
     setTimeout(() => {
       window.location.href = "/userbookings";
     }, 500);

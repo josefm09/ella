@@ -13,23 +13,23 @@ export default function CarEdit({ match }) {
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.alertsReducer);
-  const { cars } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.carsReducer);
 
-  const [car, setCar] = useState();
+  const [vestido, setCar] = useState();
   const [totalCars, setTotalCars] = useState([]);
 
   useEffect(() => {
-    if (cars.length === 0) {
+    if (vestidos.length === 0) {
       dispatch(getAllCars());
     } else {
-      setTotalCars(cars);
-      setCar(cars.find((o) => o._id === match.params.carid));
-      console.log(car);
+      setTotalCars(vestidos);
+      setCar(vestidos.find((o) => o._id === match.params.carid));
+      console.log(vestido);
     }
-  }, [cars]);
+  }, [vestidos]);
 
   const onFinish = (values) => {
-    values._id = car._id;
+    values._id = vestido._id;
 
     dispatch(editCar(values));
     console.log(values);
@@ -42,8 +42,8 @@ export default function CarEdit({ match }) {
           <Row justify="center">
             <Col lg={12} sm={24} xs={24}>
               {totalCars.length > 0 && (
-                <Form initialValues={car} layout="vertical" onFinish={onFinish}>
-                  <h3>Edit Car</h3>
+                <Form initialValues={vestido} layout="vertical" onFinish={onFinish}>
+                  <h3>Edit Vestido</h3>
                   <hr />
                   <Form.Item
                     name="name"
@@ -53,13 +53,13 @@ export default function CarEdit({ match }) {
                     <Input />
                   </Form.Item>
                   <Form.Item
-                    name="transmission"
-                    label="Transmission"
+                    name="talla"
+                    label="Talla"
                     rules={[{ required: true }]}
                   >
                     <Select
-                      name="transmission"
-                      placeholder="Please select car transmission."
+                      name="talla"
+                      placeholder="Please select vestido talla."
                     >
                       <Option value="Automatic">Automatic</Option>
                       <Option value="Manual">Manual</Option>
@@ -72,7 +72,7 @@ export default function CarEdit({ match }) {
                   >
                     <Select
                       name="seats"
-                      placeholder="Please select car seats amount."
+                      placeholder="Please select vestido seats amount."
                     >
                       <Option value="2">2</Option>
                       <Option value="3">3</Option>
@@ -90,7 +90,7 @@ export default function CarEdit({ match }) {
                     <Input />
                   </Form.Item>
                   <Form.Item
-                    name="costPerHour"
+                    name="costPerDay"
                     label="Cost Per Hour"
                     rules={[{ required: true }]}
                   >
@@ -102,7 +102,7 @@ export default function CarEdit({ match }) {
                       Cancel
                     </Button>
                     <Button type="primary" htmlType="submit">
-                      Edit Car
+                      Edit Vestido
                     </Button>
                   </div>
                 </Form>

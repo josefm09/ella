@@ -5,7 +5,7 @@ export const getAllCars = () => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    const res = await axios.get("/api/cars/getallcars");
+    const res = await axios.get("/api/vestidos/getallvestidos");
     dispatch({ type: "GET_ALL_CARS", payload: res.data });
     dispatch({ type: "LOADING", payload: false });
   } catch (error) {
@@ -14,14 +14,14 @@ export const getAllCars = () => async (dispatch) => {
   }
 };
 
-export const addCar = (reqObj) => async (dispatch) => {
+export const addVestido = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.post("/api/cars/addcar", reqObj);
+    await axios.post("/api/vestidos/addvestido", reqObj);
 
     dispatch({ type: "LOADING", payload: false });
-    message.success("New car added successfully!");
+    message.success("New vestido added successfully!");
     window.location.href = "/admin";
   } catch (error) {
     console.log(error);
@@ -33,10 +33,10 @@ export const editCar = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.post("/api/cars/editcar", reqObj);
+    await axios.post("/api/vestidos/editvestido", reqObj);
 
     dispatch({ type: "LOADING", payload: false });
-    message.success("Car details updated successfully!");
+    message.success("Vestido details updated successfully!");
     window.location.href = "/admin";
   } catch (error) {
     console.log(error);
@@ -48,10 +48,10 @@ export const deleteCar = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.post("/api/cars/deletecar", reqObj);
+    await axios.post("/api/vestidos/deletevestido", reqObj);
 
     dispatch({ type: "LOADING", payload: false });
-    message.success("Car deleted successfully!");
+    message.success("Vestido deleted successfully!");
     setTimeout(() => {
       window.location.reload();
     }, 500);

@@ -14,7 +14,7 @@ const { RangePicker } = DatePicker;
 export default function Home() {
   const dispatch = useDispatch();
 
-  const { cars } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
 
   const [totalCars, setTotalCars] = useState([]);
@@ -24,8 +24,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setTotalCars(cars);
-  }, [cars]);
+    setTotalCars(vestidos);
+  }, [vestidos]);
 
   const setFilter = (values) => {
     var selectedFrom = moment(values[0], "MMM DD yyyy HH:mm");
@@ -33,11 +33,11 @@ export default function Home() {
 
     var temp = [];
 
-    for (var car of cars) {
-      if (car.bookedTimeSlots.length === 0) {
-        temp.push(car);
+    for (var vestido of vestidos) {
+      if (vestido.bookedTimeSlots.length === 0) {
+        temp.push(vestido);
       } else {
-        for (var booking of car.bookedTimeSlots) {
+        for (var booking of vestido.bookedTimeSlots) {
           if (
             selectedFrom.isBetween(booking.from, booking.to) ||
             selectedTo.isBetween(booking.from, booking.to) ||
@@ -45,7 +45,7 @@ export default function Home() {
             moment(booking.to).isBetween(selectedFrom, selectedTo)
           ) {
           } else {
-            temp.push(car);
+            temp.push(vestido);
           }
         }
       }
@@ -69,20 +69,20 @@ export default function Home() {
           </Row>
 
           <Row justify="center" gutter={16}>
-            {totalCars?.map((car) => {
+            {totalCars?.map((vestido) => {
               return (
-                <Col key={car._id} lg={5} sm={20} xs={24}>
+                <Col key={vestido._id} lg={5} sm={20} xs={24}>
                   <Card
-                    title={car.name}
+                    title={vestido.name}
                     style={{
                       width: 300,
                     }}
-                    cover={<img alt={car.name} src={car.image} />}
+                    cover={<img alt={vestido.name} src={vestido.image} />}
                   >
                     <div className="card-footer-container">
-                      {car.costPerHour} KR Per Hour
+                      {vestido.costPerDay} KR Per Hour
                       <Button type="primary">
-                        <Link to={`/booking/${car._id}`}>Book Now</Link>
+                        <Link to={`/booking/${vestido._id}`}>Book Now</Link>
                       </Button>
                     </div>
                   </Card>

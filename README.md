@@ -1,5 +1,5 @@
 ## Project description
-Fullstack car rental web applicaton, designed and built with React, Node.js and Ant Design.
+Fullstack vestido rental web applicaton, designed and built with React, Node.js and Ant Design.
 
 ## Installation
 **Install server dependencies**

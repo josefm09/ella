@@ -35,10 +35,10 @@ export default function UserBookings() {
                     <Card key={idx} gutter={16}>
                       <Col lg={6} sm={24}>
                         <p>
-                          <b>{booking.car.name}</b>
+                          <b>{booking.vestido.name}</b>
                         </p>
                         <p>
-                          Cost Per Pour: <b>{booking.car.costPerHour} KR</b>
+                          Cost Per Pour: <b>{booking.vestido.costPerDay} KR</b>
                         </p>
                         <p>
                           Total Hours: <b>{booking.totalHours}</b>
@@ -69,8 +69,8 @@ export default function UserBookings() {
                       <Col lg={6} sm={24} className="text-right">
                         <img
                           style={{ borderRadius: 5 }}
-                          src={booking.car.image}
-                          alt={booking.car.name}
+                          src={booking.vestido.image}
+                          alt={booking.vestido.name}
                           height="140"
                           className="p-2"
                         />

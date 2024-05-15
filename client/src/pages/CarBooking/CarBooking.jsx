@@ -15,10 +15,10 @@ const { RangePicker } = DatePicker;
 export default function CarBooking({ match }) {
   const dispatch = useDispatch();
 
-  const { cars } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  const [car, setCar] = useState({});
+  const [vestido, setCar] = useState({});
   const [from, setFrom] = useState();
   const [to, setTo] = useState();
   const [totalHours, setTotalHours] = useState(0);
@@ -27,15 +27,15 @@ export default function CarBooking({ match }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (cars.length === 0) {
+    if (vestidos.length === 0) {
       dispatch(getAllCars());
     } else {
-      setCar(cars.find((o) => o._id === match.params.carid));
+      setCar(vestidos.find((o) => o._id === match.params.carid));
     }
-  }, [cars]);
+  }, [vestidos]);
 
   useEffect(() => {
-    setTotalAmount(totalHours * car.costPerHour);
+    setTotalAmount(totalHours * vestido.costPerDay);
     if (driver) {
       setTotalAmount(totalAmount + 30 * totalHours);
     }
@@ -52,7 +52,7 @@ export default function CarBooking({ match }) {
     const reqObj = {
       token,
       user: JSON.parse(localStorage.getItem("user"))._id,
-      car: car._id,
+      vestido: vestido._id,
       totalHours,
       totalAmount,
       driverRequired: driver,
@@ -75,18 +75,18 @@ export default function CarBooking({ match }) {
             style={{ minHeight: "90vh" }}
           >
             <Col lg={10} sm={24} xs={24} className="p-3">
-              <img src={car.image} alt={car.name} className="car-img" />
+              <img src={vestido.image} alt={vestido.name} className="vestido-img" />
             </Col>
 
             <Col lg={10} sm={24} xs={24} className="text-right">
               <Divider type="horizontal" dashed>
-                Car Info
+                Vestido Info
               </Divider>
               <div>
-                <p>{car.name}</p>
-                <p>{car.transmission}</p>
-                <p>Seats: {car.seats}</p>
-                <p>{car.costPerHour} KR Per Hour</p>
+                <p>{vestido.name}</p>
+                <p>{vestido.talla}</p>
+                <p>Seats: {vestido.seats}</p>
+                <p>{vestido.costPerDay} KR Per Hour</p>
               </div>
 
               <Divider type="horizontal" dashed>
@@ -112,7 +112,7 @@ export default function CarBooking({ match }) {
                     Total Hours: <b>{totalHours}</b>
                   </p>
                   <p>
-                    Cost Per Hour: <b>{car.costPerHour}</b>
+                    Cost Per Hour: <b>{vestido.costPerDay}</b>
                   </p>
                   <Checkbox
                     onChange={(e) => {
@@ -140,7 +140,7 @@ export default function CarBooking({ match }) {
               )}
             </Col>
 
-            {car.name && (
+            {vestido.name && (
               <Modal
                 visible={showModal}
                 closable={false}
@@ -148,7 +148,7 @@ export default function CarBooking({ match }) {
                 title="Booked time slots"
               >
                 <div className="p-2">
-                  {car.bookedTimeSlots?.map((slot, idx) => {
+                  {vestido.bookedTimeSlots?.map((slot, idx) => {
                     return (
                       <Button key={idx} type="primary">
                         {slot.from} - {slot.to}
