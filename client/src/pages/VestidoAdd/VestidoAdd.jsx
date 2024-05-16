@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Form, Input, Select, Button } from "antd";
 
-import { addVestido } from "../../store/actions/carsActions";
+import { addVestido } from "../../store/actions/vestidosActions";
 
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, DatePicker, Button, Card } from "antd";
 import moment from "moment";
 
-import { getAllCars } from "../../store/actions/carsActions";
+import { getAllVestidos } from "../../store/actions/vestidosActions";
 
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
@@ -14,22 +14,22 @@ const { RangePicker } = DatePicker;
 export default function Home() {
   const dispatch = useDispatch();
 
-  const { vestidos } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.vestidosReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  const [totalCars, setTotalCars] = useState([]);
+  const [totalVestidos, setTotalVestidos] = useState([]);
 
   useEffect(() => {
-    dispatch(getAllCars());
+    dispatch(getAllVestidos());
   }, []);
 
   useEffect(() => {
-    setTotalCars(vestidos);
+    setTotalVestidos(vestidos);
   }, [vestidos]);
 
   const setFilter = (values) => {
-    var selectedFrom = moment(values[0], "MMM DD yyyy HH:mm");
-    var selectedTo = moment(values[1], "MMM DD yyyy HH:mm");
+    var selectedFrom = moment(values[0], "DD MMM yyyy HH:mm");
+    var selectedTo = moment(values[1], "DD MMM yyyy HH:mm");
 
     var temp = [];
 
@@ -51,7 +51,7 @@ export default function Home() {
       }
     }
 
-    setTotalCars(temp);
+    setTotalVestidos(temp);
   };
 
   return (
@@ -62,14 +62,14 @@ export default function Home() {
             <Col lg={20} sm={24} className="d-flex justify-content-left">
               <RangePicker
                 showTime={{ format: "HH:mm" }}
-                format="MMM DD yyyy HH:mm"
+                format="DD MMM yyyy HH:mm"
                 onChange={setFilter}
               />
             </Col>
           </Row>
 
           <Row justify="center" gutter={16}>
-            {totalCars?.map((vestido) => {
+            {totalVestidos?.map((vestido) => {
               return (
                 <Col key={vestido._id} lg={5} sm={20} xs={24}>
                   <Card
@@ -80,9 +80,9 @@ export default function Home() {
                     cover={<img alt={vestido.name} src={vestido.image} />}
                   >
                     <div className="card-footer-container">
-                      {vestido.costPerDay} KR Per Hour
+                      {vestido.costPerDay} MXN Por día
                       <Button type="primary">
-                        <Link to={`/booking/${vestido._id}`}>Book Now</Link>
+                        <Link to={`/booking/${vestido._id}`}>Rentar ahora</Link>
                       </Button>
                     </div>
                   </Card>

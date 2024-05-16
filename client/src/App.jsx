@@ -3,11 +3,11 @@ import { Route, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import CarBooking from "./pages/CarBooking";
+import VestidoBooking from "./pages/VestidoBooking";
 import UserBookings from "./pages/UserBookings";
 import VestidoAdd from "./pages/VestidoAdd";
 import Admin from "./pages/Admin";
-import CarEdit from "./pages/CarEdit";
+import VestidoEdit from "./pages/VestidoEdit";
 
 import "antd/dist/antd.min.css";
 
@@ -17,10 +17,10 @@ export default function App() {
       <ProtectedRoute path="/" exact component={Home} />
       <Route path="/login" exact component={Login} />
       <Route path="/register" exact component={Register} />
-      <ProtectedRoute path="/booking/:carid" exact component={CarBooking} />
+      <ProtectedRoute path="/booking/:carid" exact component={VestidoBooking} />
       <ProtectedRoute path="/userbookings" exact component={UserBookings} />
       <ProtectedRoute path="/addvestido" exact component={VestidoAdd} />
-      <ProtectedRoute path="/editvestido/:carid" exact component={CarEdit} />
+      <ProtectedRoute path="/editvestido/:carid" exact component={VestidoEdit} />
       <ProtectedRoute path="/admin" exact component={Admin} />
     </BrowserRouter>
   );

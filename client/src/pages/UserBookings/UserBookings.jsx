@@ -24,7 +24,7 @@ export default function UserBookings() {
     <>
       {loading === false ? (
         <DefaultLayout>
-          <h3 className="text-center mt-2">My Bookings</h3>
+          <h3 className="text-center mt-2">Vestidos reservados</h3>
 
           <Row justify="center" gutter={16}>
             <Col lg={16} sm={24}>
@@ -38,30 +38,30 @@ export default function UserBookings() {
                           <b>{booking.vestido.name}</b>
                         </p>
                         <p>
-                          Cost Per Pour: <b>{booking.vestido.costPerDay} KR</b>
+                          Costo por día: <b>{booking.vestido.costPerDay} MXN</b>
                         </p>
                         <p>
-                          Total Hours: <b>{booking.totalHours}</b>
+                          Días totales: <b>{booking.totalDays}</b>
                         </p>
                         <p>
-                          Total Cost: <b>{booking.totalAmount} KR</b>
+                          Costo total: <b>{booking.totalAmount} MXN</b>
                         </p>
                       </Col>
 
                       <Col lg={12} sm={24}>
                         <p>
-                          Transaction Id: <b>{booking.transactionId}</b>
+                          Id de la trasnacción: <b>{booking.transactionId}</b>
                         </p>
                         <p>
-                          From: <b>{booking.bookedTimeSlots.from}</b>
+                          Desde: <b>{booking.bookedTimeSlots.from}</b>
                         </p>
                         <p>
-                          To: <b>{booking.bookedTimeSlots.to}</b>
+                          Hasta: <b>{booking.bookedTimeSlots.to}</b>
                         </p>
                         <p>
-                          Date of booking:{" "}
+                          Fecha de la reserva:{" "}
                           <b>
-                            {moment(booking.createdAt).format("MMM DD yyyy")}
+                            {moment(booking.createdAt).format("DD MMM yyyy")}
                           </b>
                         </p>
                       </Col>

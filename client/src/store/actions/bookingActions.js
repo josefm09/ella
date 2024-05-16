@@ -1,7 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 
-export const bookCar = (reqObj) => async (dispatch) => {
+export const bookVestido = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {

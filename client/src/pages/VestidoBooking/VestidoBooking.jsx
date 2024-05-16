@@ -4,48 +4,48 @@ import moment from "moment";
 import StripeCheckout from "react-stripe-checkout";
 import { Col, Row, Divider, DatePicker, Checkbox, Modal, Button } from "antd";
 
-import { getAllCars } from "../../store/actions/carsActions";
-import { bookCar } from "../../store/actions/bookingActions";
+import { getAllVestidos } from "../../store/actions/vestidosActions";
+import { bookVestido } from "../../store/actions/bookingActions";
 
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const { RangePicker } = DatePicker;
 
-export default function CarBooking({ match }) {
+export default function VestidoBooking({ match }) {
   const dispatch = useDispatch();
 
-  const { vestidos } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.vestidosReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  const [vestido, setCar] = useState({});
+  const [vestido, setVestido] = useState({});
   const [from, setFrom] = useState();
   const [to, setTo] = useState();
-  const [totalHours, setTotalHours] = useState(0);
-  const [driver, setDriver] = useState(false);
+  const [totalDays, setTotalDays] = useState(0);
+  const [cliente, setCliente] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if (vestidos.length === 0) {
-      dispatch(getAllCars());
+      dispatch(getAllVestidos());
     } else {
-      setCar(vestidos.find((o) => o._id === match.params.carid));
+      setVestido(vestidos.find((o) => o._id === match.params.carid));
     }
   }, [vestidos]);
 
   useEffect(() => {
-    setTotalAmount(totalHours * vestido.costPerDay);
-    if (driver) {
-      setTotalAmount(totalAmount + 30 * totalHours);
+    setTotalAmount(totalDays * vestido.costPerDay);
+    if (cliente) {
+      setTotalAmount(totalAmount + 30 * totalDays);  // no entiedo porque se suma 30
     }
-  }, [driver, totalHours]);
+  }, [cliente, totalDays]);
 
   const selectTimeSlots = (values) => {
-    setFrom(moment(values[0]).format("MMM DD yyyy HH:mm"));
-    setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
+    setFrom(moment(values[0]).format("DD MMM yyyy HH:mm"));
+    setTo(moment(values[1]).format("DD MMM yyyy HH:mm"));
 
-    setTotalHours(values[1].diff(values[0], "hours"));
+    setTotalDays(values[1].diff(values[0], "horas"));
   };
 
   const onToken = (token) => {
@@ -53,16 +53,16 @@ export default function CarBooking({ match }) {
       token,
       user: JSON.parse(localStorage.getItem("user"))._id,
       vestido: vestido._id,
-      totalHours,
+      totalDays,
       totalAmount,
-      driverRequired: driver,
+      clienteRequired: cliente,
       bookedTimeSlots: {
         from,
         to,
       },
     };
 
-    dispatch(bookCar(reqObj));
+    dispatch(bookVestido(reqObj));
   };
 
   return (
@@ -85,16 +85,16 @@ export default function CarBooking({ match }) {
               <div>
                 <p>{vestido.name}</p>
                 <p>{vestido.talla}</p>
-                <p>Seats: {vestido.seats}</p>
-                <p>{vestido.costPerDay} KR Per Hour</p>
+                {/* <p>Seats: {vestido.seats}</p> */}
+                <p>{vestido.costPerDay} MXN por día</p>
               </div>
 
               <Divider type="horizontal" dashed>
-                Select Time Slots
+                Selecciona el tiempo
               </Divider>
               <RangePicker
                 showTime={{ format: "HH:mm" }}
-                format="MMM DD yyyy HH:mm"
+                format="DD MMM yyyy HH:mm"
                 onChange={selectTimeSlots}
               />
               <br />
@@ -104,38 +104,38 @@ export default function CarBooking({ match }) {
                   setShowModal(true);
                 }}
               >
-                See Booked Slots
+                Ver tiempo reservado
               </Button>
               {from && to && (
                 <div>
                   <p>
-                    Total Hours: <b>{totalHours}</b>
+                    Días totales: <b>{totalDays}</b>
                   </p>
                   <p>
-                    Cost Per Hour: <b>{vestido.costPerDay}</b>
+                    Costo por día: <b>{vestido.costPerDay}</b>
                   </p>
                   <Checkbox
                     onChange={(e) => {
                       if (e.target.checked) {
-                        setDriver(true);
+                        setCliente(true);
                       } else {
-                        setDriver(false);
+                        setCliente(false);
                       }
                     }}
                   >
-                    Driver Required
+                    Cliente requerido
                   </Checkbox>
 
-                  <h3>Total Cost: {totalAmount}</h3>
+                  <h3>Costo total: {totalAmount}</h3>
 
-                  <StripeCheckout
+                  {/* <StripeCheckout
                     token={onToken}
                     currency="NOK"
                     amount={totalAmount * 100}
                     stripeKey="pk_test_51KEFwfCLH4hE1KANoSGrO4F4bIv74aBAm9jUGMxI2lQzedktY2h8KNNwqG87cvAHEbHeLoyaPXrNbDPINotK6yxB007aOPlyXj"
                   >
                     <Button type="primary">Book Now</Button>
-                  </StripeCheckout>
+                  </StripeCheckout> */}
                 </div>
               )}
             </Col>
@@ -145,7 +145,7 @@ export default function CarBooking({ match }) {
                 visible={showModal}
                 closable={false}
                 footer={false}
-                title="Booked time slots"
+                title="Tiempo reservado"
               >
                 <div className="p-2">
                   {vestido.bookedTimeSlots?.map((slot, idx) => {
@@ -163,7 +163,7 @@ export default function CarBooking({ match }) {
                         setShowModal(false);
                       }}
                     >
-                      CLOSE
+                      CERRAR
                     </Button>
                   </div>
                 </div>

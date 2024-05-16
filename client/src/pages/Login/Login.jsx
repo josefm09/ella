@@ -31,20 +31,20 @@ export default function Login() {
 
           <div className="right-column">
             <Form layout="vertical" name="login-form" onFinish={onFinish}>
-              <p className="form-title">Login</p>
+              <p className="form-title">Acceso al sistema</p>
               <hr />
               <Form.Item
                 name="username"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your username!",
+                    message: "Porfavor ingresa tu nombre de usuario",
                   },
                 ]}
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Username"
+                  placeholder="Usuario"
                 />
               </Form.Item>
               <Form.Item
@@ -52,14 +52,14 @@ export default function Login() {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your password!",
+                    message: "Porfavor ingresa tu contraseña",
                   },
                 ]}
               >
                 <Input.Password
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
-                  placeholder="Password"
+                  placeholder="Contraseña"
                 />
               </Form.Item>
 
@@ -69,10 +69,10 @@ export default function Login() {
                   htmlType="submit"
                   className="login-form-button"
                 >
-                  Log in
+                  Acceder
                 </Button>
                 <hr />
-                <Link to="/register">Click Here to Register</Link>
+                <Link to="/register">Click aquí para registrarse</Link>
               </Form.Item>
             </Form>
           </div>

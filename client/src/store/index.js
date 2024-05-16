@@ -3,13 +3,13 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { alertsReducer } from "./reducers/alertsReducer";
-import { carsReducer } from "./reducers/carsReducer";
+import { vestidosReducer } from "./reducers/vestidosReducer";
 import { bookingsReducer } from "./reducers/bookingsReducer";
 
 const composeEnhancers = composeWithDevTools({});
 
 const rootReducer = combineReducers({
-  carsReducer,
+  vestidosReducer,
   alertsReducer,
   bookingsReducer,
 });

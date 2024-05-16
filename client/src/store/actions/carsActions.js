@@ -1,7 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 
-export const getAllCars = () => async (dispatch) => {
+export const getAllVestidos = () => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
@@ -29,7 +29,7 @@ export const addVestido = (reqObj) => async (dispatch) => {
   }
 };
 
-export const editCar = (reqObj) => async (dispatch) => {
+export const editVestido = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {

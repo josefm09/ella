@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Col, Row, Button, Popconfirm, Card } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-import { deleteCar, getAllCars } from "../../store/actions/carsActions";
+import { deleteCar, getAllVestidos } from "../../store/actions/vestidosActions";
 
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
@@ -12,17 +12,17 @@ import Spinner from "../../components/Spinner";
 export default function Admin() {
   const dispatch = useDispatch();
 
-  const { vestidos } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.vestidosReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  const [totalCars, setTotalCars] = useState([]);
+  const [totalVestidos, setTotalVestidos] = useState([]);
 
   useEffect(() => {
-    dispatch(getAllCars());
+    dispatch(getAllVestidos());
   }, []);
 
   useEffect(() => {
-    setTotalCars(vestidos);
+    setTotalVestidos(vestidos);
   }, [vestidos]);
 
   return (
@@ -41,7 +41,7 @@ export default function Admin() {
           </Row>
 
           <Row justify="center" gutter={16}>
-            {totalCars?.map((vestido) => {
+            {totalVestidos?.map((vestido) => {
               return (
                 <Col key={vestido._id} lg={5} sm={20} xs={24}>
                   <Card

@@ -31,20 +31,20 @@ export default function Register() {
 
           <div className="right-column">
             <Form layout="vertical" name="login-form" onFinish={onFinish}>
-              <p className="form-title">Register</p>
+              <p className="form-title">Registro</p>
               <hr />
               <Form.Item
                 name="username"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your username!",
+                    message: "Porfavor ingresa tu nombre de usuario",
                   },
                 ]}
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Username"
+                  placeholder="Usuario"
                 />
               </Form.Item>
               <Form.Item
@@ -52,14 +52,14 @@ export default function Register() {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your password!",
+                    message: "Porfavor ingresa tu contraseña",
                   },
                 ]}
               >
                 <Input.Password
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
-                  placeholder="Password"
+                  placeholder="Contraseña"
                 />
               </Form.Item>
 
@@ -69,10 +69,10 @@ export default function Register() {
                   htmlType="submit"
                   className="login-form-button"
                 >
-                  Register
+                  Registrarse
                 </Button>
                 <hr />
-                <Link to="/login">Click Here to Login</Link>
+                <Link to="/login">Click aquí para ir al formulario de acceso</Link>
               </Form.Item>
             </Form>
           </div>

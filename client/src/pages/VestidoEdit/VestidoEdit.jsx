@@ -2,28 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Form, Input, Select, Button } from "antd";
 
-import { editCar, getAllCars } from "../../store/actions/carsActions";
+import { editVestido, getAllVestidos } from "../../store/actions/vestidosActions";
 
 import DefaultLayout from "../../components/DefaultLayout";
 import Spinner from "../../components/Spinner";
 
 const { Option } = Select;
 
-export default function CarEdit({ match }) {
+export default function VestidoEdit({ match }) {
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.alertsReducer);
-  const { vestidos } = useSelector((state) => state.carsReducer);
+  const { vestidos } = useSelector((state) => state.vestidosReducer);
 
-  const [vestido, setCar] = useState();
-  const [totalCars, setTotalCars] = useState([]);
+  const [vestido, setVestido] = useState();
+  const [totalVestidos, setTotalVestidos] = useState([]);
 
   useEffect(() => {
     if (vestidos.length === 0) {
-      dispatch(getAllCars());
+      dispatch(getAllVestidos());
     } else {
-      setTotalCars(vestidos);
-      setCar(vestidos.find((o) => o._id === match.params.carid));
+      setTotalVestidos(vestidos);
+      setVestido(vestidos.find((o) => o._id === match.params.carid));
       console.log(vestido);
     }
   }, [vestidos]);
@@ -31,7 +31,7 @@ export default function CarEdit({ match }) {
   const onFinish = (values) => {
     values._id = vestido._id;
 
-    dispatch(editCar(values));
+    dispatch(editVestido(values));
     console.log(values);
   };
 
@@ -41,13 +41,13 @@ export default function CarEdit({ match }) {
         <DefaultLayout>
           <Row justify="center">
             <Col lg={12} sm={24} xs={24}>
-              {totalCars.length > 0 && (
+              {totalVestidos.length > 0 && (
                 <Form initialValues={vestido} layout="vertical" onFinish={onFinish}>
-                  <h3>Edit Vestido</h3>
+                  <h3>Editar Vestido</h3>
                   <hr />
                   <Form.Item
                     name="name"
-                    label="Name"
+                    label="Nombre"
                     rules={[{ required: true }]}
                   >
                     <Input />
@@ -61,11 +61,15 @@ export default function CarEdit({ match }) {
                       name="talla"
                       placeholder="Please select vestido talla."
                     >
-                      <Option value="Automatic">Automatic</Option>
-                      <Option value="Manual">Manual</Option>
+                      <Option value="XS">XS</Option>
+                      <Option value="S">S</Option>
+                      <Option value="M">M</Option>
+                      <Option value="L">L</Option>
+                      <Option value="XL">XL</Option>
+                      <Option value="XXL">XXL</Option>
                     </Select>
                   </Form.Item>
-                  <Form.Item
+                  {/* <Form.Item
                     name="seats"
                     label="Seats"
                     rules={[{ required: true }]}
@@ -81,17 +85,17 @@ export default function CarEdit({ match }) {
                       <Option value="6">6</Option>
                       <Option value="7">7</Option>
                     </Select>
-                  </Form.Item>
+                  </Form.Item> */}
                   <Form.Item
                     name="image"
-                    label="Image URL"
+                    label="Link de la imagen del vestido"
                     rules={[{ required: true }]}
                   >
                     <Input />
                   </Form.Item>
                   <Form.Item
                     name="costPerDay"
-                    label="Cost Per Hour"
+                    label="Costo por día"
                     rules={[{ required: true }]}
                   >
                     <Input />
@@ -99,10 +103,10 @@ export default function CarEdit({ match }) {
 
                   <div className="button-group">
                     <Button type="danger" href="/admin">
-                      Cancel
+                      Cancelar
                     </Button>
                     <Button type="primary" htmlType="submit">
-                      Edit Vestido
+                      Editar Vestido
                     </Button>
                   </div>
                 </Form>
